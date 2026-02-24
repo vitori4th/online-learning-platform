@@ -21,6 +21,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Loader2Icon, Sparkle } from "lucide-react";
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 function AddNewCourseDialog({ children }) {
     const [loading, setLoading] = useState(false)
@@ -33,6 +36,7 @@ function AddNewCourseDialog({ children }) {
         category: '',
         level: ''
     });
+    const router = useRouter();
 
     const onHandleInputChange = (field, value) => {
         setFormData(prev => ({
@@ -44,12 +48,24 @@ function AddNewCourseDialog({ children }) {
 
     const onGenerate = async () => {
         console.log(formData)
-        setLoading(true);
-        const result = await axios.post('/api/generate-course-layout', {
-            ...formData
-        });
-        console.log(result.data);
-        setLoading(false);
+        const courseId = uuidv4();
+        try {
+            setLoading(true);
+            const result = await axios.post('/api/generate-course-layout', {
+                ...formData,
+                courseId: courseId
+            });
+            if (result.data.resp == 'limit exceed') {
+                toast.warning('Please subscribe to plan!');
+                router.push('/worskpace/billing')
+            }
+            setLoading(false);
+            router.push('/wokspace/edit-course/' + result.data?.courseId);
+
+        } catch (error) {
+            setLoading(false);
+            console.log(error);
+        }
     }
     return (
         <Dialog>

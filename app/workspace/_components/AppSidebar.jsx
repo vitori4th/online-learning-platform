@@ -21,12 +21,12 @@ const SideBarOptions = [
     {
         title: 'Dashboard',
         icon: LayoutDashboard,
-        path: '/workspace'
+        path: '/workspace/#'
     },
     {
         title: 'My Learning',
         icon: Book,
-        path: '/workspace/my-courses'
+        path: '/workspace/my-learning'
     },
     {
         title: 'Explore Course',
@@ -56,8 +56,11 @@ function AppSidebar() {
     console.log('path', path)
     return (
         <Sidebar>
-            <SidebarHeader className={'p-4'}>
-                <Image src={'/logo.svg'} alt='logo' width={130} height={120} />
+            <SidebarHeader className={''}>
+                <a className="nav-logo" href="#">
+                    <div className="nav-logo-icon">C</div>
+                    <span className="nav-logo-text">CourseAI</span>
+                </a>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup />
