@@ -9,7 +9,12 @@ function EnrollCourseCard({ course, enrollCourse }) {
     const [imageError, setImageError] = useState(false);
 
     const calculatePerProgress = () => {
-        return (enrollCourse?.completedChapters?.length ?? 0 / course?.courseContent?.length) * 100;
+        const completedChapters = enrollCourse?.completedChapters?.length ?? 0;
+        const totalChapters = course?.courseContent?.length ?? 0;
+
+        if (totalChapters === 0) return 0;
+
+        return Math.min(100, Math.max(0, Math.round((completedChapters / totalChapters) * 100)));
     }
 
     const progress = calculatePerProgress();
