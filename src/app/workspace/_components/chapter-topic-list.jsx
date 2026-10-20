@@ -24,7 +24,7 @@ function ChapterTopicList({ course }) {
                                     <span className="text-primary">Capítulo {index + 1}:</span> {chapter?.chapterName}
                                 </span>
                                 <div className="flex items-center gap-3 shrink-0 whitespace-nowrap text-xs text-muted-foreground">
-                                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {chapter?.duration.replace("hour", "horas")}</span>
+                                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {chapter?.duration?.replace(/\bhours?\b/gi, "horas")}</span>
                                     <span>&middot;</span>
                                     <span>{chapter?.topics?.length ?? 0} tópicos</span>
                                 </div>

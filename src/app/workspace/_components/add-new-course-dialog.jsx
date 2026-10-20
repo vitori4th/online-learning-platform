@@ -30,7 +30,8 @@ import { Loader2Icon, Sparkle } from "lucide-react";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+// Cobrança desativada temporariamente para o TCC.
+// import { toast } from "sonner";
 
 function AddNewCourseDialog({ children }) {
     const [loading, setLoading] = useState(false)
@@ -60,10 +61,14 @@ function AddNewCourseDialog({ children }) {
                 ...formData,
                 courseId: courseId
             });
+            /* Redirecionamento para assinatura desativado temporariamente para o TCC.
             if (result.data.resp == 'limit exceed') {
                 toast.warning('Assine um plano para continuar!');
                 router.push('/workspace/billing')
+                setLoading(false);
+                return;
             }
+            */
             setLoading(false);
             router.push('/workspace/edit-course/' + result.data?.courseId);
 

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { Book, Clock, ImageIcon, Loader2Icon, PlayCircle, Settings, TrendingUp } from "lucide-react";
+import { Book, ImageIcon, Loader2Icon, PlayCircle, Settings, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -33,10 +33,12 @@ function CourseInfo({ course, viewCourse }) {
         }
     }
 
+    const levelLabels = { beginner: "Iniciante", moderate: "Intermediário", advanced: "Avançado" };
+    const level = courseLayout?.level ?? course?.level;
+
     const stats = [
-        { icon: Clock, label: "Duração", value: courseLayout?.duration ?? "-" },
         { icon: Book, label: "Capítulos", value: courseLayout?.chapters?.length ?? course?.noOfChapters ?? "-" },
-        { icon: TrendingUp, label: "Nível de dificuldade", value: courseLayout?.level ?? "-" },
+        { icon: TrendingUp, label: "Nível de dificuldade", value: levelLabels[level?.toLowerCase()] ?? level ?? "-" },
     ];
 
     return (

@@ -33,7 +33,10 @@ function Explore() {
         setCourseList(result.data);
         setLoading(false);
     }
+    const userEmail = user?.primaryEmailAddress?.emailAddress;
     const filteredCourses = courseList.filter((course) => {
+        // Cursos sem conteúdo gerado só aparecem para quem os criou
+        if (!course?.courseContent?.length && course?.userEmail !== userEmail) return false;
         const details = course?.courseJson?.course;
         return [details?.name, details?.description, details?.category, course?.name]
             .some((value) => normalizeSearch(value).includes(searchQuery));

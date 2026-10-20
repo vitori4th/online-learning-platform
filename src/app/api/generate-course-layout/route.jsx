@@ -1,8 +1,10 @@
 import { db } from '@/config/db';
 import { generateImage, generateStructuredResponse, openAIErrorResponse } from '@/config/openai';
 import { coursesTable } from '@/config/schema';
-import { auth, currentUser } from '@clerk/nextjs/server';
-import { eq } from 'drizzle-orm';
+import { currentUser } from '@clerk/nextjs/server';
+// Cobrança desativada temporariamente para o TCC.
+// import { auth } from '@clerk/nextjs/server';
+// import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
 const courseSchema = {
@@ -56,6 +58,7 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Usuário ou identificador do curso inválido.' }, { status: 400 });
         }
 
+        /* Limite por plano desativado temporariamente para o TCC.
         const { has } = await auth();
         const hasPremiumAccess = has({ plan: 'free_user' });
 
@@ -67,6 +70,7 @@ export async function POST(req) {
                 return NextResponse.json({ resp: 'limit exceed' });
             }
         }
+        */
 
         const courseJson = await generateStructuredResponse({
             name: 'course_layout',
