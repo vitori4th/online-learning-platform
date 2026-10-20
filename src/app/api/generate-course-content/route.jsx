@@ -41,6 +41,14 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Dados do curso inválidos.' }, { status: 400 });
         }
 
+        const [course] = await db.select({ includeVideo: coursesTable.includeVideo })
+            .from(coursesTable)
+            .where(eq(coursesTable.cid, courseId));
+
+        if (!course) {
+            return NextResponse.json({ error: 'Curso não encontrado.' }, { status: 404 });
+        }
+
         const courseContent = await Promise.all(courseJson.chapters.map(async (chapter) => {
             const [courseData, youtubeVideo] = await Promise.all([
                 generateStructuredResponse({
@@ -49,7 +57,7 @@ export async function POST(req) {
                     instructions,
                     input: chapter,
                 }),
-                getYoutubeVideos(chapter.chapterName),
+                course.includeVideo === true ? getYoutubeVideos(chapter.chapterName) : [],
             ]);
 
             return { youtubeVideo, courseData };
