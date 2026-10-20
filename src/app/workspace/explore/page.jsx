@@ -10,8 +10,16 @@ import { Skeleton } from '@/components/ui/skeleton';
 import PageHeader from '../_components/page-header';
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty';
 
+const normalizeSearch = (value) => String(value ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
 function Explore() {
     const [courseList, setCourseList] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     const [loading, setLoading] = useState(true);
     const { user } = useUser();
 
@@ -25,6 +33,17 @@ function Explore() {
         setCourseList(result.data);
         setLoading(false);
     }
+    const filteredCourses = courseList.filter((course) => {
+        const details = course?.courseJson?.course;
+        return [details?.name, details?.description, details?.category, course?.name]
+            .some((value) => normalizeSearch(value).includes(searchQuery));
+    });
+
+    const onSearch = (event) => {
+        event.preventDefault();
+        setSearchQuery(normalizeSearch(searchInput));
+    };
+
     return (
         <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4">
@@ -33,12 +52,17 @@ function Explore() {
                     title="Explore mais cursos"
                     description="Descubra cursos criados pela comunidade e matricule-se para começar a aprender."
                 />
-                <div className='flex gap-5 max-w-md'>
-                    <Input placeholder='Pesquisar' />
-                    <Button>
+                <form onSubmit={onSearch} role="search" className='flex gap-5 max-w-md'>
+                    <Input
+                        placeholder='Pesquisar'
+                        aria-label="Pesquisar cursos"
+                        value={searchInput}
+                        onChange={(event) => setSearchInput(event.target.value)}
+                    />
+                    <Button type="submit">
                         <Search /> Pesquisar
                     </Button>
-                </div>
+                </form>
             </div>
 
             {loading ? (
@@ -47,10 +71,10 @@ function Explore() {
                         <Skeleton key={item} className='w-full h-[240px]' />
                     ))}
                 </div>
-            ) : courseList.length > 0 ? (
+            ) : filteredCourses.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-                    {courseList.map((course, index) => (
-                        <CourseCard course={course} key={index} />
+                    {filteredCourses.map((course) => (
+                        <CourseCard course={course} key={course.cid} />
                     ))}
                 </div>
             ) : (
@@ -60,7 +84,11 @@ function Explore() {
                             <Compass />
                         </EmptyMedia>
                         <EmptyTitle>Nenhum curso encontrado</EmptyTitle>
-                        <EmptyDescription>Ainda não há cursos disponíveis para explorar. Volte mais tarde.</EmptyDescription>
+                        <EmptyDescription>
+                            {searchQuery
+                                ? 'Nenhum curso corresponde à pesquisa. Tente outro termo ou pesquise com o campo vazio para ver todos.'
+                                : 'Ainda não há cursos disponíveis para explorar. Volte mais tarde.'}
+                        </EmptyDescription>
                     </EmptyHeader>
                 </Empty>
             )}
