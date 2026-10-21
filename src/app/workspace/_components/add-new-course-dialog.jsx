@@ -35,6 +35,7 @@ import { toast } from "sonner";
 const MAX_CHAPTERS = 20;
 
 function AddNewCourseDialog({ children }) {
+    const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false)
 
     const [formData, setFormData] = useState({
@@ -91,6 +92,7 @@ function AddNewCourseDialog({ children }) {
             }
             */
             setLoading(false);
+            setOpen(false);
             router.push('/workspace/edit-course/' + result.data?.courseId);
 
         } catch (error) {
@@ -100,7 +102,7 @@ function AddNewCourseDialog({ children }) {
         }
     }
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
             <DialogContent>
                 <DialogHeader>

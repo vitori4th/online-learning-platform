@@ -2,7 +2,8 @@ import { db } from '@/config/db';
 import { generateStructuredResponse, openAIErrorResponse } from '@/config/openai';
 import { coursesTable } from '@/config/schema';
 import axios from 'axios';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
+import { currentUser } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
 const chapterSchema = {
@@ -35,18 +36,30 @@ Não inclua html, head, body, scripts, estilos inline ou Markdown.`;
 
 export async function POST(req) {
     try {
-        const { courseJson, courseTitle, courseId } = await req.json();
+        const { courseId } = await req.json();
+        const user = await currentUser();
+        const userEmail = user?.primaryEmailAddress?.emailAddress;
+        if (!userEmail) {
+            return NextResponse.json({ error: 'Faça login para gerar o conteúdo.' }, { status: 401 });
+        }
 
-        if (!courseId || !Array.isArray(courseJson?.chapters)) {
+        if (typeof courseId !== 'string' || !courseId.trim()) {
             return NextResponse.json({ error: 'Dados do curso inválidos.' }, { status: 400 });
         }
 
-        const [course] = await db.select({ includeVideo: coursesTable.includeVideo })
+        const [course] = await db.select()
             .from(coursesTable)
             .where(eq(coursesTable.cid, courseId));
 
         if (!course) {
             return NextResponse.json({ error: 'Curso não encontrado.' }, { status: 404 });
+        }
+        if (course.userEmail !== userEmail) {
+            return NextResponse.json({ error: 'Apenas o autor pode gerar o conteúdo do curso.' }, { status: 403 });
+        }
+        const courseJson = course.courseJson?.course;
+        if (!Array.isArray(courseJson?.chapters)) {
+            return NextResponse.json({ error: 'Dados do curso inválidos.' }, { status: 400 });
         }
 
         const courseContent = await Promise.all(courseJson.chapters.map(async (chapter) => {
@@ -65,9 +78,9 @@ export async function POST(req) {
 
         await db.update(coursesTable)
             .set({ courseContent })
-            .where(eq(coursesTable.cid, courseId));
+            .where(and(eq(coursesTable.cid, courseId), eq(coursesTable.userEmail, userEmail)));
 
-        return NextResponse.json({ courseName: courseTitle, CourseContent: courseContent });
+        return NextResponse.json({ courseName: courseJson.name, CourseContent: courseContent });
     } catch (error) {
         return openAIErrorResponse(error);
     }

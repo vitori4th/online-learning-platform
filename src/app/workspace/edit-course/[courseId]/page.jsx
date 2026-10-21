@@ -6,11 +6,17 @@ import CourseInfo from '../../_components/course-info';
 import ChapterTopicList from '../../_components/chapter-topic-list';
 import PageHeader from '../../_components/page-header';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useUser } from '@clerk/nextjs';
 
 function EditCourse({ viewCourse = false }) {
     const { courseId } = useParams();
     const [loading, setLoading] = useState(true);
     const [course, setCourse] = useState();
+    const [editingChapter, setEditingChapter] = useState(false);
+    const { user } = useUser();
+    const isAuthor = !!user?.primaryEmailAddress?.emailAddress &&
+        course?.userEmail === user.primaryEmailAddress.emailAddress;
+    const canEditChapters = !viewCourse && isAuthor && !course?.courseContent?.length;
 
     useEffect(() => {
         getCourseInfo();
@@ -39,8 +45,8 @@ function EditCourse({ viewCourse = false }) {
                 </div>
             ) : (
                 <>
-                    <CourseInfo course={course} viewCourse={viewCourse}/>
-                    <ChapterTopicList course={course} />
+                    <CourseInfo course={course} viewCourse={viewCourse || !isAuthor} editingChapter={editingChapter}/>
+                    <ChapterTopicList course={course} canEdit={canEditChapters} onSaved={setCourse} onEditingChange={setEditingChapter} />
                 </>
             )}
         </div>

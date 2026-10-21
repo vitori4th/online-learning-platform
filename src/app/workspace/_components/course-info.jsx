@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
-function CourseInfo({ course, viewCourse }) {
+function CourseInfo({ course, viewCourse, editingChapter = false }) {
     const courseLayout = course?.courseJson?.course;
     const [loading, setLoading] = useState(false);
     const [imageError, setImageError] = useState(false);
@@ -73,7 +73,7 @@ function CourseInfo({ course, viewCourse }) {
                 </div>
 
                 {!viewCourse ?
-                    <Button className={'w-full sm:w-fit'} onClick={GenerateCourseContent} disabled={loading}>
+                    <Button className={'w-full sm:w-fit'} onClick={GenerateCourseContent} disabled={loading || editingChapter}>
                         {loading ? <Loader2Icon className="animate-spin" /> : <Settings />}
                         Gerar conteúdo
                     </Button>
