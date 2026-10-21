@@ -10,6 +10,12 @@ import YouTube from "react-youtube";
 import { toast } from "sonner";
 import { chapterTitle } from "@/lib/utils";
 
+// O modelo costuma abrir o HTML do tópico com um título igual ao do card; remove essa repetição
+const stripRepeatedTitle = (html, title) => String(html ?? "").replace(
+    /^\s*<h[23][^>]*>([\s\S]*?)<\/h[23]>/i,
+    (heading, inner) => inner.replace(/<[^>]+>/g, "").trim().toLowerCase() === String(title ?? "").trim().toLowerCase() ? "" : heading
+);
+
 function ChapterContentLoading() {
     return (
         <div className="flex max-w-5xl flex-col gap-8 p-6 md:p-10">
@@ -129,8 +135,8 @@ function ChapterContent({ courseInfo, loading, refreshData }) {
                                 {topic?.topic}
                             </h3>
                             <div
-                                className="text-sm leading-7 text-foreground/90 [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-xs [&_h3]:mt-4 [&_h3]:font-semibold [&_ol]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_strong]:font-semibold [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-5"
-                                dangerouslySetInnerHTML={{ __html: topic?.content }}
+                                className="text-sm leading-7 text-foreground/90 [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-xs [&_h3]:mt-4 [&_h3]:font-semibold [&_ol]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_strong]:font-semibold [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_h2]:mt-4 [&_h2]:font-semibold [&_pre]:mb-3 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-muted [&_pre]:p-3 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_table]:mb-3 [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:px-3 [&_th]:py-1.5 [&_th]:text-left [&_th]:font-semibold [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-1.5"
+                                dangerouslySetInnerHTML={{ __html: stripRepeatedTitle(topic?.content, topic?.topic) }}
                             />
                         </section>
                     ))}
