@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Clock } from "lucide-react";
 import React from "react";
+import { chapterTitle } from "@/lib/utils";
 import EditChapterDialog from './edit-chapter-dialog';
 
 function ChapterTopicList({ course, canEdit = false, onSaved, onEditingChange }) {
@@ -24,7 +25,7 @@ function ChapterTopicList({ course, canEdit = false, onSaved, onEditingChange })
                                 <div className="min-w-0 flex-1">
                                     <AccordionTrigger className="items-center gap-3 hover:no-underline">
                                         <span className="min-w-0 truncate text-left flex-1 text-sm font-medium">
-                                            <span className="text-primary">Capítulo {index + 1}:</span> {chapter?.chapterName}
+                                            <span className="text-primary">Capítulo {index + 1}:</span> {chapterTitle(chapter?.chapterName)}
                                         </span>
                                         <div className="flex items-center gap-3 shrink-0 whitespace-nowrap text-xs text-muted-foreground">
                                             <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {chapter?.duration?.replace(/\bhours?\b/gi, "horas")}</span>

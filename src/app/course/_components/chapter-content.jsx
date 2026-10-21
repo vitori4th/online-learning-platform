@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import React, { useContext, useState } from "react";
 import YouTube from "react-youtube";
 import { toast } from "sonner";
+import { chapterTitle } from "@/lib/utils";
 
 function ChapterContentLoading() {
     return (
@@ -89,7 +90,7 @@ function ChapterContent({ courseInfo, loading, refreshData }) {
                         <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
                             Capítulo {selectedChapterIndex + 1} de {courseContent?.length}
                         </span>
-                        <h1 className="text-xl font-semibold md:text-2xl">{chapter?.courseData?.chapterName}</h1>
+                        <h1 className="text-xl font-semibold md:text-2xl">{chapterTitle(chapter?.courseData?.chapterName)}</h1>
                     </div>
 
                     {!isCompleted ? (

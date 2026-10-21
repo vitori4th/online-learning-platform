@@ -45,6 +45,7 @@ const courseSchema = {
 const instructions = `Crie a estrutura de um curso conforme os dados fornecidos pelo usuário.
 Responda no mesmo idioma do tema informado. Respeite a quantidade de capítulos, o nível e a preferência por vídeo.
 Cada capítulo deve ter duração realista e uma lista objetiva de tópicos.
+chapterName deve conter apenas o título do capítulo, sem prefixos como "Capítulo 1:", pois a interface já numera os capítulos.
 O número noOfChapters deve ser igual ao tamanho de chapters.
 bannerImagePrompt deve ser um prompt visual detalhado, sem texto na imagem, para uma ilustração 3D moderna, educacional e em formato paisagem.`;
 

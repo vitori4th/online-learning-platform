@@ -15,7 +15,7 @@ import {
     SheetTitle,
 } from "@/components/ui/sheet";
 import { SelectedChapterIndexContext } from "@/context/selected-chapter-index-context";
-import { cn } from "@/lib/utils";
+import { chapterTitle, cn } from "@/lib/utils";
 import { CheckCircle2Icon, CircleIcon } from "lucide-react";
 
 function ChapterListLoading() {
@@ -74,7 +74,7 @@ function ChapterListContent({ courseContent, completedChapters, selectedChapterI
                                     {isCompleted
                                         ? <CheckCircle2Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                                         : <CircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />}
-                                    <span className="line-clamp-2">{index + 1}. {chapter?.courseData?.chapterName}</span>
+                                    <span className="line-clamp-2">{index + 1}. {chapterTitle(chapter?.courseData?.chapterName)}</span>
                                 </span>
                             </AccordionTrigger>
                             <AccordionContent className="pt-1.5 pr-2 pb-2 pl-9">
