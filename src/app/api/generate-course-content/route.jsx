@@ -78,18 +78,25 @@ const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 const getYoutubeVideos = async (topic) => {
     if (!process.env.YOUTUBE_API_KEY) return [];
 
-    const response = await axios.get(YOUTUBE_BASE_URL, {
-        params: {
-            part: 'snippet',
-            q: topic,
-            maxResults: 4,
-            type: 'video',
-            key: process.env.YOUTUBE_API_KEY,
-        },
-    });
+    // Uma falha na busca de vídeos não pode impedir a geração do curso (RNF03)
+    try {
+        const response = await axios.get(YOUTUBE_BASE_URL, {
+            params: {
+                part: 'snippet',
+                q: topic,
+                maxResults: 4,
+                type: 'video',
+                key: process.env.YOUTUBE_API_KEY,
+            },
+            timeout: 10000,
+        });
 
-    return response.data.items.map((item) => ({
-        videoId: item.id?.videoId,
-        title: item.snippet?.title,
-    }));
+        return (response.data?.items ?? []).map((item) => ({
+            videoId: item.id?.videoId,
+            title: item.snippet?.title,
+        }));
+    } catch (error) {
+        console.error('YouTube search failed', { topic, message: error?.message });
+        return [];
+    }
 };

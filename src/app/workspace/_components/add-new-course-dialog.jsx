@@ -30,8 +30,9 @@ import { Loader2Icon, Sparkle } from "lucide-react";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from "next/navigation";
-// Cobrança desativada temporariamente para o TCC.
-// import { toast } from "sonner";
+import { toast } from "sonner";
+
+const MAX_CHAPTERS = 20;
 
 function AddNewCourseDialog({ children }) {
     const [loading, setLoading] = useState(false)
@@ -53,12 +54,32 @@ function AddNewCourseDialog({ children }) {
         }));
     }
 
+    // Retorna a primeira mensagem de erro encontrada ou null se o formulário for válido (RNF06)
+    const validateForm = () => {
+        const noOfChapters = Number(formData.noOfChapters);
+
+        if (!formData.name.trim()) return 'Informe o nome do curso.';
+        if (!Number.isInteger(noOfChapters) || noOfChapters < 1 || noOfChapters > MAX_CHAPTERS) {
+            return `Informe um número de capítulos entre 1 e ${MAX_CHAPTERS}.`;
+        }
+        if (!formData.level) return 'Selecione o nível de dificuldade.';
+        return null;
+    }
+
     const onGenerate = async () => {
+        const validationError = validateForm();
+        if (validationError) {
+            toast.warning(validationError);
+            return;
+        }
+
         const courseId = uuidv4();
         try {
             setLoading(true);
             const result = await axios.post('/api/generate-course-layout', {
                 ...formData,
+                name: formData.name.trim(),
+                noOfChapters: Number(formData.noOfChapters),
                 courseId: courseId
             });
             /* Redirecionamento para assinatura desativado temporariamente para o TCC.
@@ -75,6 +96,7 @@ function AddNewCourseDialog({ children }) {
         } catch (error) {
             setLoading(false);
             console.log(error);
+            toast.error(error?.response?.data?.error || 'Não foi possível gerar o curso. Tente novamente.');
         }
     }
     return (

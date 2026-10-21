@@ -78,7 +78,11 @@ export async function POST(req) {
             instructions,
             input: formData,
         });
-        const bannerImageUrl = await generateImage(courseJson.course.bannerImagePrompt);
+        // Sem capa, a interface exibe um ícone no lugar; a falha não impede a criação do curso (RNF03)
+        const bannerImageUrl = await generateImage(courseJson.course.bannerImagePrompt).catch((error) => {
+            console.error('Banner generation failed', { message: error?.message });
+            return '';
+        });
 
         await db.insert(coursesTable).values({
             ...formData,
