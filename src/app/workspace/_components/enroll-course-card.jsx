@@ -40,7 +40,7 @@ function EnrollCourseCard({ course, enrollCourse }) {
                 <h2 className="font-semibold text-lg line-clamp-1">{courseJson?.name}</h2>
                 <p className="line-clamp-2 text-muted-foreground text-sm">{courseJson?.description}</p>
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <span>Progress</span>
+                    <span>Progresso</span>
                     <span className="text-primary font-medium">{progress}%</span>
                 </div>
 

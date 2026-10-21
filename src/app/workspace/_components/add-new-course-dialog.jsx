@@ -119,27 +119,27 @@ function AddNewCourseDialog({ children }) {
                         />
                     </Field>
                     <Field className="gap-1">
-                        <FieldLabel htmlFor="course-description">Descricao do curso (opcional)</FieldLabel>
+                        <FieldLabel htmlFor="course-description">Descrição do curso (opcional)</FieldLabel>
                         <Textarea
                             id="course-description"
-                            placeholder="Descricao do curso"
+                            placeholder="Descrição do curso"
                             onChange={(event) => onHandleInputChange('description', event?.target.value)}
                         />
                     </Field>
                     <Field className="gap-1">
-                        <FieldLabel htmlFor="course-chapters">Numero de capitulos</FieldLabel>
+                        <FieldLabel htmlFor="course-chapters">Número de capítulos</FieldLabel>
                         <Input
                             id="course-chapters"
-                            placeholder="Numero de capitulos"
+                            placeholder="Número de capítulos"
                             type='number'
                             onChange={(event) => onHandleInputChange('noOfChapters', event?.target.value)}
                         />
                     </Field>
                     <Field orientation="horizontal" className="items-center!">
                         <FieldContent className="gap-1">
-                            <FieldLabel htmlFor="include-video">Incluir video</FieldLabel>
+                            <FieldLabel htmlFor="include-video">Incluir vídeo</FieldLabel>
                             <FieldDescription>
-                                Ative para pedir sugestoes de conteudo com suporte a video nas aulas do curso.
+                                Ative para pedir sugestões de conteúdo com suporte a vídeo nas aulas do curso.
                             </FieldDescription>
                         </FieldContent>
 
@@ -150,16 +150,16 @@ function AddNewCourseDialog({ children }) {
                         />
                     </Field>
                     <Field className="gap-1">
-                        <FieldLabel htmlFor="course-level">Nivel de dificuldade</FieldLabel>
+                        <FieldLabel htmlFor="course-level">Nível de dificuldade</FieldLabel>
                         <Select onValueChange={(value) => onHandleInputChange('level', value)}>
                             <SelectTrigger id="course-level" className="w-full">
-                                <SelectValue placeholder="Selecione o nivel" />
+                                <SelectValue placeholder="Selecione o nível" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectItem value="beginner">Iniciante</SelectItem>
-                                    <SelectItem value="moderate">Intermediario</SelectItem>
-                                    <SelectItem value="advanced">Avancado</SelectItem>
+                                    <SelectItem value="moderate">Intermediário</SelectItem>
+                                    <SelectItem value="advanced">Avançado</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
@@ -168,7 +168,7 @@ function AddNewCourseDialog({ children }) {
                         <FieldLabel htmlFor="course-category">Categoria</FieldLabel>
                         <Input
                             id="course-category"
-                            placeholder="Categoria (separada por virgula)"
+                            placeholder="Categoria (separada por vírgula)"
                             onChange={(event) => onHandleInputChange('category', event?.target.value)}
                         />
                     </Field>
