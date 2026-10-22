@@ -12,7 +12,6 @@ import {
   Rocket,
   Shield,
   Target,
-  Users,
   Zap,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -25,12 +24,12 @@ const features = [
 ];
 
 const courses = [
-  { icon: Palette, title: "UI/UX Design Masterclass", level: "Intermediário", students: "2.4k" },
-  { icon: Atom, title: "React & Next.js Completo", level: "Avançado", students: "3.1k" },
-  { icon: Brain, title: "Machine Learning", level: "Avançado", students: "1.8k" },
-  { icon: ChartColumn, title: "Data Science com Python", level: "Iniciante", students: "4.2k" },
-  { icon: Shield, title: "Cybersecurity Essentials", level: "Intermediário", students: "1.2k" },
-  { icon: Rocket, title: "DevOps & Cloud AWS", level: "Avançado", students: "2.7k" },
+  { icon: Palette, title: "UI/UX Design Masterclass", level: "Intermediário" },
+  { icon: Atom, title: "React & Next.js Completo", level: "Avançado" },
+  { icon: Brain, title: "Machine Learning", level: "Avançado" },
+  { icon: ChartColumn, title: "Data Science com Python", level: "Iniciante" },
+  { icon: Shield, title: "Cybersecurity Essentials", level: "Intermediário" },
+  { icon: Rocket, title: "DevOps & Cloud AWS", level: "Avançado" },
 ];
 
 const steps = [
@@ -39,17 +38,10 @@ const steps = [
   { num: "3", icon: Target, title: "Aprenda no seu ritmo", desc: "Acesse em qualquer dispositivo, acompanhe seu progresso e peça aprofundamentos." },
 ];
 
-const testimonials = [
-  { name: "Ana Souza", role: "Designer", text: "Criei um curso de Figma em 30 segundos. A qualidade do conteúdo me surpreendeu.", avatar: "A" },
-  { name: "Carlos Lima", role: "Dev Backend", text: "Aprendi Kubernetes do zero com um curso gerado especialmente para o meu nível.", avatar: "C" },
-  { name: "Mariana Reis", role: "Product Manager", text: "A melhor plataforma de aprendizado que já usei. Rápida, precisa e personalizada.", avatar: "M" },
-];
-
 const navItems = [
   { id: "how", label: "Como funciona" },
   { id: "features", label: "Recursos" },
   { id: "explore", label: "Explore" },
-  { id: "blog", label: "Depoimentos" },
 ];
 
 export default function Home() {
@@ -338,28 +330,6 @@ export default function Home() {
           z-index: 1;
         }
 
-        .hero-stats {
-          display: flex;
-          justify-content: center;
-          gap: 48px;
-          margin-top: 56px;
-          position: relative;
-          z-index: 1;
-        }
-
-        .hero-stat-num {
-          font-size: 26px;
-          font-weight: 800;
-          color: white;
-          letter-spacing: -0.5px;
-        }
-
-        .hero-stat-label {
-          font-size: 12px;
-          color: rgba(255,255,255,0.5);
-          margin-top: 3px;
-          font-weight: 500;
-        }
 
         /* SECTION WRAPPER */
         .section {
@@ -535,51 +505,6 @@ export default function Home() {
           color: var(--purple-text);
         }
 
-        .students { font-size: 11px; color: var(--muted2); }
-
-        /* TESTIMONIALS */
-        .testimonials-bg {
-          background: var(--bg);
-          border-top: 1px solid var(--border);
-          border-bottom: 1px solid var(--border);
-        }
-
-        .testimonials-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 16px;
-        }
-
-        .testimonial-card {
-          background: white;
-          border: 1px solid var(--border);
-          border-radius: 14px;
-          padding: 28px;
-        }
-
-        .testimonial-text {
-          font-size: 14px;
-          color: var(--text);
-          line-height: 1.7;
-          margin-bottom: 20px;
-          font-style: italic;
-        }
-
-        .testimonial-author { display: flex; align-items: center; gap: 10px; }
-
-        .avatar {
-          width: 36px; height: 36px;
-          background: var(--purple-dark);
-          border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          color: white;
-          font-size: 13px;
-          font-weight: 700;
-        }
-
-        .author-name { font-size: 13px; font-weight: 700; color: var(--text); }
-        .author-role { font-size: 12px; color: var(--muted); }
-
         /* CTA */
         .cta {
           background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 60%, var(--purple-mid) 100%);
@@ -663,12 +588,10 @@ export default function Home() {
           nav { padding: 0 24px; }
           .nav-links { display: none; }
           .hero { padding: 60px 24px; }
-          .hero-stats { gap: 28px; }
           .section { padding: 52px 24px; }
           .steps { grid-template-columns: 1fr; }
           .features-grid { grid-template-columns: 1fr; }
           .courses-grid { grid-template-columns: 1fr; }
-          .testimonials-grid { grid-template-columns: 1fr; }
           .cta { padding: 60px 24px; }
           footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
           .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -706,7 +629,7 @@ export default function Home() {
                 <button className="btn-outline">Entrar</button>
               </a>
               <a href='/sign-up'>
-                <button className="btn-primary">Começar grátis</button>
+                <button className="btn-primary">Começar a aprender</button>
               </a>
             </>
           )}
@@ -741,20 +664,8 @@ export default function Home() {
             Gerar Curso <ArrowRight size={16} strokeWidth={2.4} style={{ display: "inline-block", verticalAlign: "middle", marginLeft: 6 }} />
           </button>
         </div>
-        <p className="hero-hint fu fu4">Primeiro curso grátis · Sem cartão de crédito</p>
+        <p className="hero-hint fu fu4">Escolha um tema para começar a aprender.</p>
 
-        <div className="hero-stats fu fu4">
-          {[
-            { num: "47k+", label: "Cursos gerados" },
-            { num: "12k+", label: "Estudantes ativos" },
-            { num: "4.9★", label: "Avaliação média" },
-          ].map((s) => (
-            <div key={s.label}>
-              <div className="hero-stat-num">{s.num}</div>
-              <div className="hero-stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* HOW IT WORKS */}
@@ -806,8 +717,8 @@ export default function Home() {
       <div style={{ background: "var(--bg)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }} id="explore">
         <div className="section">
           <div className="section-tag">Explore</div>
-          <h2 className="section-title">Cursos já criados<br />pela comunidade.</h2>
-          <p className="section-sub">Veja exemplos do que já foi gerado e comece a partir deles.</p>
+          <h2 className="section-title">Sugestões de temas<br />para aprender.</h2>
+          <p className="section-sub">Explore ideias de temas para criar seu próprio curso com IA.</p>
 
           <div className="courses-grid">
             {courses.map((c) => {
@@ -820,7 +731,6 @@ export default function Home() {
                   <div className="course-title">{c.title}</div>
                   <div className="course-meta">
                     <span className="level-tag">{c.level}</span>
-                    <span className="students" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><Users size={13} strokeWidth={2.2} /> {c.students}</span>
                   </div>
                 </div>
               </div>
@@ -830,34 +740,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* TESTIMONIALS */}
-      <div className="testimonials-bg" id="blog">
-        <div className="section">
-          <div className="section-tag">Depoimentos</div>
-          <h2 className="section-title">O que nossos alunos dizem.</h2>
-          <p className="section-sub" style={{ marginBottom: 36 }}>Mais de 12 mil pessoas já transformaram a forma de aprender.</p>
-
-          <div className="testimonials-grid">
-            {testimonials.map((t) => (
-              <div className="testimonial-card" key={t.name}>
-                <div className="testimonial-text">"{t.text}"</div>
-                <div className="testimonial-author">
-                  <div className="avatar">{t.avatar}</div>
-                  <div>
-                    <div className="author-name">{t.name}</div>
-                    <div className="author-role">{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* CTA */}
       <div className="cta">
-        <h2 className="cta-title">Comece a aprender hoje.<br />Grátis.</h2>
-        <p className="cta-sub">Seu primeiro curso gerado pela IA sem custo. Sem cartão.</p>
+        <h2 className="cta-title">Comece a aprender hoje.</h2>
+        <p className="cta-sub">Escolha um tema e crie seu curso com inteligência artificial.</p>
         <button className="cta-btn">
           Criar meu primeiro curso <ArrowRight size={16} strokeWidth={2.4} style={{ display: "inline-block", verticalAlign: "middle", marginLeft: 6 }} />
         </button>
