@@ -58,6 +58,7 @@ Os modelos podem ser trocados pelas variáveis de ambiente `OPENAI_TEXT_MODEL` e
 | Login / cadastro | `/sign-in`, `/sign-up` | Autenticação (RF01) |
 | Painel | `/workspace` | Cursos criados e criação de novo curso (RF02, RF10) |
 | Revisão da estrutura | `/workspace/edit-course/[courseId]` | Revisar, editar e gerar o conteúdo (RF05, RF06) |
+| Detalhes do curso | `/workspace/view-course/[courseId]` | Informações, capítulos e acesso à leitura de um curso matriculado (RF09, RF10) |
 | Explorar | `/workspace/explore` | Cursos disponíveis e matrícula (RF08, RF10) |
 | Meu aprendizado | `/workspace/my-learning` | Cursos matriculados (RF10) |
 | Leitor do curso | `/course/[courseId]` | Leitura dos capítulos e marcação de progresso (RF09) |
