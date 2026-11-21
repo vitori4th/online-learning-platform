@@ -11,7 +11,7 @@ A avaliação **não** mediu aprendizagem, qualidade pedagógica das trilhas, es
 - **Amostra:** oito alunos e ex-alunos de Sistemas de Informação da UNIFEI, entre 20 e 30 anos, com familiaridade prévia com IA Generativa.
 - **Seleção:** amostra de conveniência, não representativa de estudantes em geral nem de docentes.
 - **Identificação:** os participantes são identificados pelos códigos P1 a P8.
-- **Consentimento:** todos preencheram um termo de consentimento.
+- **Consentimento:** todos preencheram um termo de consentimento ([modelo do termo](https://drive.google.com/file/d/1UTidnLKQv4Hepxrd6PEriBJ8msLVOnch/view)).
 
 ## 3. Procedimento
 
@@ -35,6 +35,8 @@ As verbalizações do *think aloud* contextualizaram as sessões. A análise qua
 8. Registrar por escrito dificuldades, elogios e sugestões; responder à entrevista; responder depois ao SUS.
 
 ## 5. Roteiro da entrevista
+
+As respostas registradas estão no [registro das respostas da entrevista](https://docs.google.com/document/d/1alH6jtrAmG3wxvAh8HcG91LXFqA1nqXEiSJwx4eSHRY/edit). Um [modelo de registro](https://docs.google.com/document/d/1O9c5GLZupDgP_SiyqXjq4gdjxClOUKC9cGAG_WtF9Fw/edit) reúne as mesmas perguntas, com campos para as respostas.
 
 1. **Uso e dificuldades:** Houve algum ponto do sistema em que você não soube como continuar, precisou tentar mais de uma vez ou esperava que algo funcionasse de outro jeito? Descreva a situação.
 2. **Espera e feedback:** O que achou do tempo de espera durante a geração da estrutura e do conteúdo? A forma como o sistema informa que está processando foi suficiente?

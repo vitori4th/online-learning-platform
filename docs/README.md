@@ -17,6 +17,18 @@ Aplicação publicada: https://online-learning-platform-tau.vercel.app/
 | [05 – Avaliação de usabilidade](05-avaliacao-usabilidade.md) | Roteiro de tarefas, roteiro da entrevista, questionário SUS e resultado |
 | [Wireframes](wireframes/) | Wireframes das telas do sistema |
 
+## Materiais da pesquisa
+
+Materiais complementares do TCC, citados nos apêndices do artigo:
+
+| Material | Apêndice do artigo | Link |
+|---|---|---|
+| Protocolo da revisão narrativa | D | [Google Docs](https://docs.google.com/document/d/1ICn9hvoa-mVbSkaoiIJzStz_TyD7Ao4uxlxp7RzrRds/edit) |
+| Planilha de extração dos estudos | E | [Google Sheets](https://docs.google.com/spreadsheets/d/1r1T6sV7fZ900X09_OPloBTM4kRnhdySVkTc-Q9IrNqs/edit) |
+| Registro das respostas da entrevista | F | [Google Docs](https://docs.google.com/document/d/1alH6jtrAmG3wxvAh8HcG91LXFqA1nqXEiSJwx4eSHRY/edit) |
+| Modelo do termo de consentimento | H | [Google Drive](https://drive.google.com/file/d/1UTidnLKQv4Hepxrd6PEriBJ8msLVOnch/view) |
+| Modelo de registro da entrevista | I | [Google Docs](https://docs.google.com/document/d/1O9c5GLZupDgP_SiyqXjq4gdjxClOUKC9cGAG_WtF9Fw/edit) |
+
 ## Visão geral do fluxo
 
 ![Visão geral do fluxo do EduGen](img/fluxo-geral.svg)

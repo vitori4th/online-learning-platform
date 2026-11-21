@@ -55,6 +55,7 @@ Os modelos podem ser trocados pelas variáveis de ambiente `OPENAI_TEXT_MODEL` e
 
 | Tela | Caminho | Função |
 |---|---|---|
+| Landing page | `/` | Apresentação do sistema e acesso ao login |
 | Login / cadastro | `/sign-in`, `/sign-up` | Autenticação (RF01) |
 | Painel | `/workspace` | Cursos criados e criação de novo curso (RF02, RF10) |
 | Revisão da estrutura | `/workspace/edit-course/[courseId]` | Revisar, editar e gerar o conteúdo (RF05, RF06) |
@@ -62,6 +63,7 @@ Os modelos podem ser trocados pelas variáveis de ambiente `OPENAI_TEXT_MODEL` e
 | Explorar | `/workspace/explore` | Cursos disponíveis e matrícula (RF08, RF10) |
 | Meu aprendizado | `/workspace/my-learning` | Cursos matriculados (RF10) |
 | Leitor do curso | `/course/[courseId]` | Leitura dos capítulos e marcação de progresso (RF09) |
+| Perfil | `/workspace/profile` | Dados da conta do usuário, pelo componente `UserProfile` do Clerk (RF01) |
 
 ## 5. Modelo de dados
 
@@ -74,6 +76,8 @@ Os modelos podem ser trocados pelas variáveis de ambiente `OPENAI_TEXT_MODEL` e
 | `users` | Nome, e-mail (único) | Referenciada por `courses` e `enrollCourse` (por e-mail) |
 | `courses` | Identificador público, nome, descrição, nível, categoria, estrutura gerada, capa, conteúdo gerado | Autoria vinculada a `users` (por e-mail) |
 | `enrollCourse` | Capítulos concluídos | Vinculada a `users` (por e-mail) e a `courses` (por identificador público) |
+
+O esquema está em `src/config/schema.js`, e as migrações geradas pelo Drizzle Kit ficam versionadas em `src/drizzle/` (`npm run db:generate` para gerar e `npm run db:migrate` para aplicar).
 
 O campo `subscriptionId` e a página `/workspace/billing` vêm de uma funcionalidade de cobrança que está **desativada** nesta versão.
 

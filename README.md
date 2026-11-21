@@ -62,6 +62,18 @@ npm run dev
 
 Abra http://localhost:3000 no navegador.
 
+As migrações do banco ficam em `src/drizzle/` e são geradas a partir do esquema em `src/config/schema.js`.
+
+### Testes
+
+Os testes automatizados cobrem parte das rotas da API: a edição de capítulos (`PATCH /api/courses`) e regras da geração do conteúdo (`POST /api/generate-course-content`), como o uso da estrutura salva e o bloqueio de quem não é o autor. Eles usam o executor de testes nativo do Node.js:
+
+```bash
+node --test tests/chapter-editing.test.cjs
+```
+
+Rode `npm install` antes, porque os testes usam o pacote `typescript`, instalado como dependência de desenvolvimento.
+
 ### Scripts
 
 | Script | Função |
