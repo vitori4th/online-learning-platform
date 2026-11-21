@@ -4,21 +4,9 @@
 
 O EduGen é uma aplicação web *full-stack* em Next.js com App Router. A interface em React e a API interna (*route handlers*) ficam no mesmo projeto. A aplicação está implantada na Vercel.
 
-```mermaid
-flowchart TB
-    subgraph Cliente[Navegador]
-        UI[Interface React<br/>Tailwind CSS + shadcn/ui]
-    end
-    subgraph Vercel[Next.js na Vercel]
-        MW[middleware.js<br/>proteção de rotas]
-        API[Route handlers<br/>/api/*]
-    end
-    UI --> MW --> API
-    UI -. login e sessão .-> Clerk[Clerk<br/>identidade]
-    API --> DB[(PostgreSQL serverless<br/>Neon, via Drizzle ORM)]
-    API --> OAI[OpenAI API<br/>Responses + Images]
-    API --> YT[YouTube Data API v3]
-```
+![Arquitetura do EduGen](img/arquitetura.svg)
+
+*Arquitetura do EduGen: interface, API interna e serviços externos. Fonte: elaboração própria.*
 
 ## 2. Tecnologias
 
@@ -76,40 +64,9 @@ Os modelos podem ser trocados pelas variáveis de ambiente `OPENAI_TEXT_MODEL` e
 
 ## 5. Modelo de dados
 
-```mermaid
-erDiagram
-    users ||--o{ courses : "cria (por e-mail)"
-    users ||--o{ enrollCourse : "matricula-se (por e-mail)"
-    courses ||--o{ enrollCourse : "recebe matrículas (por cid)"
+![Modelo de dados do EduGen](img/modelo-dados.svg)
 
-    users {
-        integer id PK
-        varchar name
-        varchar email UK
-        varchar subscriptionId
-    }
-    courses {
-        integer id PK
-        varchar cid UK "identificador público"
-        varchar name
-        varchar description
-        varchar duration
-        integer noOfChapters
-        boolean includeVideo
-        varchar level
-        varchar category
-        json courseJson "estrutura gerada (capítulos e tópicos)"
-        varchar bannerImageUrl "capa"
-        json courseContent "conteúdo gerado"
-        varchar userEmail FK
-    }
-    enrollCourse {
-        integer id PK
-        varchar cid FK
-        varchar userEmail FK
-        json completedChapters "capítulos concluídos"
-    }
-```
+*Modelo de dados do EduGen (PK: chave primária; UK: valor único; FK: chave estrangeira). Fonte: elaboração própria.*
 
 | Tabela | Principais campos | Relacionamentos |
 |---|---|---|

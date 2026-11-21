@@ -18,29 +18,9 @@ Com essa separação, o autor confere e edita capítulos e tópicos antes de sol
 
 No artigo, esta etapa é descrita apenas em texto. O diagrama abaixo representa essa descrição.
 
-```mermaid
-sequenceDiagram
-    actor U as Autor
-    participant F as Frontend
-    participant A as API<br/>generate-course-content
-    participant T as OpenAI (texto)
-    participant Y as YouTube API
-    participant D as Banco de dados
+![Diagrama de Sequência: geração do conteúdo dos capítulos (Etapa 2)](img/sequencia-etapa2.svg)
 
-    U->>F: confirma a estrutura e solicita o conteúdo
-    F->>A: POST /api/generate-course-content
-    A->>D: busca o curso e confere o autor
-    par para cada capítulo, em paralelo
-        A->>T: envia dados do capítulo revisado
-        T-->>A: retorna tópicos com conteúdo em HTML
-    and se "Incluir vídeo" estiver marcado
-        A->>Y: busca até 4 vídeos pelo nome do capítulo
-        Y-->>A: retorna vídeos (ou lista vazia em caso de falha)
-    end
-    A->>D: salva o conteúdo do curso
-    A-->>F: retorna o conteúdo gerado
-    F-->>U: curso disponível para matrícula e leitura
-```
+*Diagrama de Sequência: geração do conteúdo dos capítulos (Etapa 2). Fonte: elaboração própria.*
 
 ## 2. Configuração dos modelos
 

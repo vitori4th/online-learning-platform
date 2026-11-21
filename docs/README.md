@@ -19,14 +19,9 @@ Aplicação publicada: https://online-learning-platform-tau.vercel.app/
 
 ## Visão geral do fluxo
 
-```mermaid
-flowchart LR
-    A[Formulário de criação] --> B[Etapa 1: IA gera estrutura<br/>capítulos e tópicos + capa]
-    B --> C[Revisão da estrutura<br/>pelo autor]
-    C --> D[Etapa 2: IA gera o conteúdo<br/>de cada capítulo, em paralelo]
-    D --> E[Curso disponível<br/>matrícula e exploração]
-    E --> F[Leitura e marcação<br/>de capítulos concluídos]
-```
+![Visão geral do fluxo do EduGen](img/fluxo-geral.svg)
+
+*Visão geral do fluxo de criação e uso de trilhas. Fonte: elaboração própria.*
 
 ## Escopo da documentação
 

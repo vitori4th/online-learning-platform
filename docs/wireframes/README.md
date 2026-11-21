@@ -1,19 +1,42 @@
 # Wireframes – EduGen
 
-Coloque nesta pasta os wireframes das telas do sistema. Sugestão de nomes, seguindo o fluxo principal:
+Wireframes das telas do EduGen, na ordem do fluxo de uso.
 
-| Arquivo sugerido | Tela | Requisitos |
-|---|---|---|
-| `01-login.png` | Login e cadastro | RF01 |
-| `02-painel.png` | Painel com os cursos criados | RF10 |
-| `03-formulario-criacao.png` | Formulário de criação de curso | RF02 |
-| `04-revisao-estrutura.png` | Revisão e edição da estrutura | RF05 |
-| `05-explorar.png` | Exploração de cursos e matrícula | RF08, RF10 |
-| `06-meu-aprendizado.png` | Cursos matriculados | RF10 |
-| `07-leitor.png` | Leitor do curso com marcação de conclusão | RF09 |
+| # | Tela | Rota | Requisitos |
+|---|---|---|---|
+| 1 | [Landing page](#1-landing-page) | `/` | – |
+| 2 | [Entrar](#2-entrar) | `/sign-in` | RF01 |
+| 3 | [Criar conta](#3-criar-conta) | `/sign-up` | RF01 |
+| 4 | [Painel](#4-painel) | `/workspace` | RF10 |
+| 5 | [Criar curso com IA](#5-criar-curso-com-ia) | modal em `/workspace` | RF02, RF03, RF04 |
+| 6 | [Detalhes do curso](#6-detalhes-do-curso) | `/workspace/view-course/[courseId]` | RF09, RF10 |
+| 7 | [Explorar cursos](#7-explorar-cursos) | `/workspace/explore` | RF08, RF10 |
+| 8 | [Meu aprendizado](#8-meu-aprendizado) | `/workspace/my-learning` | RF10 |
+| 9 | [Aula](#9-aula) | `/course/[courseId]` | RF09 |
 
-Para exibir um wireframe em outro documento, use:
+## 1. Landing page
+![Landing page](01-landing-page.png)
 
-```markdown
-![Formulário de criação](wireframes/03-formulario-criacao.png)
-```
+## 2. Entrar
+![Entrar](02-entrar.png)
+
+## 3. Criar conta
+![Criar conta](03-criar-conta.png)
+
+## 4. Painel
+![Painel](04-painel.png)
+
+## 5. Criar curso com IA
+![Modal Criar curso com IA](05-modal-criar-curso.png)
+
+## 6. Detalhes do curso
+![Detalhes do curso](06-detalhes-do-curso.png)
+
+## 7. Explorar cursos
+![Explorar cursos](07-explorar-cursos.png)
+
+## 8. Meu aprendizado
+![Meu aprendizado](08-meu-aprendizado.png)
+
+## 9. Aula
+![Aula](09-aula.png)

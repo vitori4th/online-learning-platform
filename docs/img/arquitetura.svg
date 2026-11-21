@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#000000"/>
+    </marker>
+  </defs>
+  <rect width="900" height="400" fill="#ffffff"/>
+
+  <!-- Navegador -->
+  <g stroke="#000000" stroke-width="1.4" fill="#ffffff">
+    <rect x="30" y="165" width="190" height="90"/>
+  </g>
+  <g text-anchor="middle" fill="#000000">
+    <text x="125" y="192" font-weight="bold">Navegador</text>
+    <text x="125" y="215">Interface React</text>
+    <text x="125" y="235" font-size="12">Tailwind CSS + shadcn/ui</text>
+  </g>
+
+  <!-- Next.js na Vercel -->
+  <g stroke="#000000" stroke-width="1.4" fill="none">
+    <rect x="280" y="95" width="260" height="235" rx="10" ry="10"/>
+  </g>
+  <text x="410" y="120" text-anchor="middle" font-weight="bold" fill="#000000">Next.js (Vercel)</text>
+  <g stroke="#000000" stroke-width="1.4" fill="#ffffff">
+    <rect x="300" y="140" width="220" height="60"/>
+    <rect x="300" y="250" width="220" height="60"/>
+  </g>
+  <g text-anchor="middle" fill="#000000">
+    <text x="410" y="165">middleware.js</text>
+    <text x="410" y="185" font-size="12">proteção de rotas</text>
+    <text x="410" y="275">Route handlers</text>
+    <text x="410" y="295" font-size="12">API interna /api/*</text>
+  </g>
+
+  <!-- Serviços externos -->
+  <g stroke="#000000" stroke-width="1.4" fill="#ffffff">
+    <rect x="620" y="20" width="250" height="60"/>
+    <!-- Banco de dados (cilindro) -->
+    <path d="M620,122 L620,182 A125,12 0 0,0 870,182 L870,122"/>
+    <ellipse cx="745" cy="122" rx="125" ry="12"/>
+    <rect x="620" y="220" width="250" height="60"/>
+    <rect x="620" y="310" width="250" height="60"/>
+  </g>
+  <g text-anchor="middle" fill="#000000">
+    <text x="745" y="45">Clerk</text>
+    <text x="745" y="65" font-size="12">autenticação e sessões</text>
+    <text x="745" y="158">PostgreSQL serverless (Neon)</text>
+    <text x="745" y="178" font-size="12">acesso via Drizzle ORM</text>
+    <text x="745" y="245">OpenAI API</text>
+    <text x="745" y="265" font-size="12">texto (Responses) e imagem</text>
+    <text x="745" y="345">YouTube Data API v3</text>
+  </g>
+
+  <!-- Conexões -->
+  <g stroke="#000000" stroke-width="1.3" fill="none" marker-end="url(#seta)">
+    <line x1="220" y1="195" x2="300" y2="172"/>
+    <line x1="410" y1="200" x2="410" y2="250"/>
+    <line x1="520" y1="160" x2="620" y2="60"/>
+    <line x1="520" y1="270" x2="620" y2="160"/>
+    <line x1="520" y1="280" x2="620" y2="250"/>
+    <line x1="520" y1="295" x2="620" y2="340"/>
+  </g>
+  <g stroke="#000000" stroke-width="1.3" fill="none" stroke-dasharray="6,5" marker-end="url(#seta)">
+    <polyline points="125,165 125,40 620,40"/>
+  </g>
+  <text x="300" y="33" text-anchor="middle" font-size="12" fill="#000000">login e sessão</text>
+</svg>
