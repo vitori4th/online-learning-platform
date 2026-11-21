@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <!-- Reprodução da Figura 2 do artigo (TikZ): 1 cm = 60 px; x' = (x + 0.8) * 60; y' = (5.9 - y) * 60 -->
+  <rect width="720" height="440" fill="#ffffff"/>
+  <g stroke="#000000" stroke-width="1.4" fill="none">
+    <!-- Ator -->
+    <circle cx="48" cy="156" r="16.8"/>
+    <line x1="48" y1="172.8" x2="48" y2="240"/>
+    <line x1="24" y1="195" x2="48" y2="172.8"/>
+    <line x1="48" y1="172.8" x2="72" y2="195"/>
+    <line x1="48" y1="240" x2="27" y2="282"/>
+    <line x1="48" y1="240" x2="69" y2="282"/>
+    <!-- Fronteira do sistema -->
+    <rect x="168" y="30" width="516" height="402" rx="10" ry="10"/>
+    <!-- Associações ator - casos de uso (do ponto (0,2.3) ao lado oeste de cada caso) -->
+    <line x1="48" y1="216" x2="207" y2="90"/>
+    <line x1="48" y1="216" x2="471" y2="90"/>
+    <line x1="48" y1="216" x2="207" y2="174"/>
+    <line x1="48" y1="216" x2="471" y2="174"/>
+    <line x1="48" y1="216" x2="207" y2="258"/>
+    <line x1="48" y1="216" x2="471" y2="258"/>
+    <line x1="48" y1="216" x2="300" y2="348"/>
+  </g>
+  <g fill="#ffffff" stroke="#000000" stroke-width="1.4">
+    <ellipse cx="300" cy="90" rx="93" ry="27"/>
+    <ellipse cx="564" cy="90" rx="93" ry="27"/>
+    <ellipse cx="300" cy="174" rx="93" ry="30"/>
+    <ellipse cx="564" cy="174" rx="93" ry="30"/>
+    <ellipse cx="300" cy="258" rx="93" ry="27"/>
+    <ellipse cx="564" cy="258" rx="93" ry="30"/>
+    <ellipse cx="432" cy="348" rx="132" ry="31"/>
+  </g>
+  <g fill="#000000" text-anchor="middle">
+    <text x="48" y="315">Usuário</text>
+    <text x="426" y="59" font-weight="bold">Sistema EduGen</text>
+    <text x="300" y="95">Autenticar-se</text>
+    <text x="564" y="95">Criar Curso</text>
+    <text x="300" y="170">Revisar Estrutura</text>
+    <text x="300" y="188">do Curso</text>
+    <text x="564" y="170">Gerar Conteúdo</text>
+    <text x="564" y="188">do Curso</text>
+    <text x="300" y="263">Explorar Cursos</text>
+    <text x="564" y="254">Matricular-se</text>
+    <text x="564" y="272">em Curso</text>
+    <text x="432" y="344">Acompanhar Progresso</text>
+    <text x="432" y="362">(marcar capítulo concluído)</text>
+  </g>
+</svg>

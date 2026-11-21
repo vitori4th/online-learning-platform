@@ -10,28 +10,13 @@ Com essa separação, o autor confere e edita capítulos e tópicos antes de sol
 
 ### Etapa 1 – Estrutura e capa
 
-```mermaid
-sequenceDiagram
-    actor U as Usuário
-    participant F as Frontend
-    participant A as API<br/>generate-course-layout
-    participant T as OpenAI (texto)
-    participant I as OpenAI (imagem)
-    participant D as Banco de dados
+![Diagrama de Sequência: geração da estrutura e da capa do curso (Etapa 1)](img/sequencia-etapa1.svg)
 
-    U->>F: preenche formulário e envia
-    F->>A: POST /api/generate-course-layout
-    A->>T: solicita estrutura do curso
-    T-->>A: retorna JSON (capítulos/tópicos)
-    A->>I: solicita imagem de capa
-    I-->>A: retorna imagem gerada
-    A->>D: salva curso
-    D-->>A: confirma gravação
-    A-->>F: retorna identificador do curso
-    F-->>U: exibe tela de revisão da estrutura
-```
+*Diagrama de Sequência: geração da estrutura e da capa do curso (Etapa 1) (Figura 3 do artigo). Fonte: elaboração própria.*
 
 ### Etapa 2 – Conteúdo dos capítulos
+
+No artigo, esta etapa é descrita apenas em texto. O diagrama abaixo representa essa descrição.
 
 ```mermaid
 sequenceDiagram

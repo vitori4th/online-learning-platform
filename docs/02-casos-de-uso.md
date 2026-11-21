@@ -2,26 +2,9 @@
 
 ## Diagrama
 
-```mermaid
-flowchart LR
-    U((Usuário))
-    subgraph S[Sistema EduGen]
-        UC1([Autenticar-se])
-        UC2([Criar Curso])
-        UC3([Revisar Estrutura do Curso])
-        UC4([Gerar Conteúdo do Curso])
-        UC5([Explorar Cursos])
-        UC6([Matricular-se em Curso])
-        UC7([Acompanhar Progresso<br/>marcar capítulo concluído])
-    end
-    U --- UC1
-    U --- UC2
-    U --- UC3
-    U --- UC4
-    U --- UC5
-    U --- UC6
-    U --- UC7
-```
+![Diagrama de Casos de Uso do EduGen](img/casos-de-uso.svg)
+
+*Diagrama de Casos de Uso do EduGen (Figura 2 do artigo). Fonte: elaboração própria.*
 
 O diagrama mostra apenas as associações entre o usuário e os casos de uso. A ordem entre criar o curso, revisar a estrutura e gerar o conteúdo é uma **sequência do fluxo**, e não uma inclusão de comportamento. Por isso ela aparece nas descrições abaixo e no [fluxo de geração](04-fluxo-de-geracao.md), e não como relações «include».
 
